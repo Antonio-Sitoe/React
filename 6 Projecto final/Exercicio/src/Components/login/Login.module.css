@@ -1,0 +1,28 @@
+.div {
+  max-width: 300px;
+}
+
+.title {
+  font-size: 2.5rem;
+  color: #252525;
+}
+
+.perdi {
+  text-decoration: underline;
+}
+
+.btnLink {
+  margin-top: 2rem;
+  padding: 1rem 2rem;
+  border: 0.4rem;
+}
+.btn,
+.btnLink {
+  background: #9e9e9e;
+  color: rgb(0, 0, 0);
+  margin: 1rem 0;
+}
+.p {
+  margin: 2rem 0;
+}
+
