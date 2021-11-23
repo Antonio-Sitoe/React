@@ -1,0 +1,63 @@
+body,
+nav,
+header,
+div {
+ margin: 0;
+ padding: 0;
+}
+
+body {
+ font-size: medium;
+}
+
+.header,
+.footer {
+ background: #252525;
+ padding: .6rem;
+}
+
+.navbar {
+ width: 30%;
+}
+
+.headers,
+.navbar ul {
+
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ list-style: none;
+ flex-wrap: wrap;
+}
+
+a {
+ color: whitesmoke;
+ text-decoration: none;
+}
+
+.LOGO {
+ font-size: large;
+
+ background: rgb(121, 119, 119);
+ padding: 1rem;
+}
+
+.headers {
+ margin: 0 auto;
+ max-width: 960px;
+}
+
+.container {
+ margin: 2rem auto;
+ max-width: 960px;
+ display: grid;
+ grid-gap: 10px;
+ padding: 0 1rem;
+}
+
+
+.endereco {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
