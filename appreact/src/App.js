@@ -1,18 +1,30 @@
 import React from 'react';
-import './style.css';
+var Client = require('@paymentsds/mpesa');
 
+const client = new Client({
+  apiKey: '<REPLACE>', // API Key
+  publicKey: '<REPLACE>', // Public Key
+  serviceProviderCode: '<REPLACE>', // input_ServiceProviderCode
+});
+const paymentData = {
+  from: '841234567', // input_CustomerMSISDN
+  reference: '11114', // input_ThirdPartyReference
+  transation: 'T12344CC', // input_TransactionReference
+  amount: '10', // input_Amount
+};
+client
+  .receive(paymentData)
+  .then((r) => {
+    console.log(r.data);
+  })
+  .catch((e) => {
+    console.log(e);
+  });
 const App = () => {
   return (
-    <form className='container'>
-      <input type='text' placeholder='Nome' />
-      <input type='text' placeholder='Sobrenome' />
-      <input type='email' placeholder='Email' />
-      <div className='endereco'>
-        <input type='text' placeholder="Rua" />
-        <input type='number' placeholder="Numero da casa" />
-      </div>
-      <button>Registrar</button>
-    </form>
+    <div>
+      <button>Fech</button>
+    </div>
   );
 };
 
