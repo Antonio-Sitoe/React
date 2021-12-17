@@ -1,7 +1,11 @@
 import React from 'react';
-import Main from './pages/Main';
-import './style.css'
+import GlobalStore from './store';
+import TodoList from './TodoList';
 
-const App = () => <Main />;
+const App = () => (
+  <GlobalStore>
+    <TodoList />
+  </GlobalStore>
+);
 
 export default App;
