@@ -1,39 +1,51 @@
 import React from 'react';
-import './index.css';
-import commerce from './lib/commerce';
 
 const App = () => {
-  const [produts, setProduts] = React.useState([]);
-  const [loading, setLoading] = React.useState(false);
-
-  async function fetchProducts() {
-    setLoading(true);
-    const response = await commerce.products.list();
-    setProduts(response.data);
-    console.log(response.data[0]);
-    setLoading(false);
-  }
-
+  const ref = React.useRef();
+  const [state, setState] = React.useState(null);
+  console.log(state);
   React.useEffect(() => {
-    fetchProducts();
+    const course = Array.from(ref.current.querySelectorAll('section'));
+
+    const objectArray = course.map((item) => {
+      return {
+        titulo: item.querySelector('h1').innerText,
+        descricao: item.querySelector('p').innerText,
+        aulas: item.querySelector('.aulas').innerText,
+        horas:
+          item.querySelector('.horas') &&
+          item.querySelector('.horas').innerText,
+      };
+    });
+    setState(objectArray);
   }, []);
 
-  if (loading) return <p className='content'>...loading</p>;
   return (
-    <div>
-      <div className='content'>
-        {produts &&
-          produts.map(({ id, name, assets, price, description }) => {
-            return (
-              <div key={id}>
-                <img src={assets[0] && assets[0].url} alt='' />
-                <h3>{name}</h3>
-                {description}
-                <p>{price.formatted_with_symbol}</p>
-              </div>
-            );
-          })}
-      </div>
+    <div ref={ref}>
+      <section className='curso'>
+        <h1>Web Design Completo</h1>
+        <p>
+          Este curso é para quem deseja entrar ou já está no mercado de criação
+          de websites.
+        </p>
+        <span className='aulas'>80</span>
+        <span className='horas'>22</span>
+      </section>
+      <section className='curso'>
+        <h1>WordPress Como CMS</h1>
+        <p>
+          No curso de WordPress Como CMS, você aprende do zero como pegar
+          qualquer site em HTML e torná-lo totalmente gerenciável com a
+          plataforma do WordPress.
+        </p>
+        <span className='aulas'>46</span>
+        <span className='horas'>9</span>
+      </section>
+      <section className='curso'>
+        <h1>UI Design Avançado</h1>
+        <p>Este é um curso avançado de User Interface Design.</p>
+        <span className='aulas'>55</span>
+      </section>
     </div>
   );
 };
