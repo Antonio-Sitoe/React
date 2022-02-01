@@ -1,51 +1,33 @@
 import React from 'react';
+import './style.css';
 
 const App = () => {
-  const ref = React.useRef();
-  const [state, setState] = React.useState(null);
-  console.log(state);
-  React.useEffect(() => {
-    const course = Array.from(ref.current.querySelectorAll('section'));
-
-    const objectArray = course.map((item) => {
-      return {
-        titulo: item.querySelector('h1').innerText,
-        descricao: item.querySelector('p').innerText,
-        aulas: item.querySelector('.aulas').innerText,
-        horas:
-          item.querySelector('.horas') &&
-          item.querySelector('.horas').innerText,
-      };
-    });
-    setState(objectArray);
-  }, []);
+  const [show, setShow] = React.useState(false);
+  const box = React.useRef();
+  function onMouseOver() {
+    setShow(true);
+  }
+  function onMouseLeave() {
+    setShow(false);
+  }
+  function onMouseMove(e) {
+    box.current.style.top = `${e.pageY - 20}px`;
+    box.current.style.left = `${e.pageX + 20}px`;
+  }
 
   return (
-    <div ref={ref}>
-      <section className='curso'>
-        <h1>Web Design Completo</h1>
-        <p>
-          Este curso é para quem deseja entrar ou já está no mercado de criação
-          de websites.
-        </p>
-        <span className='aulas'>80</span>
-        <span className='horas'>22</span>
-      </section>
-      <section className='curso'>
-        <h1>WordPress Como CMS</h1>
-        <p>
-          No curso de WordPress Como CMS, você aprende do zero como pegar
-          qualquer site em HTML e torná-lo totalmente gerenciável com a
-          plataforma do WordPress.
-        </p>
-        <span className='aulas'>46</span>
-        <span className='horas'>9</span>
-      </section>
-      <section className='curso'>
-        <h1>UI Design Avançado</h1>
-        <p>Este é um curso avançado de User Interface Design.</p>
-        <span className='aulas'>55</span>
-      </section>
+    <div>
+      <div
+        onMouseOver={onMouseOver}
+        onMouseLeave={onMouseLeave}
+        onMouseMove={onMouseMove}
+        className='mapa'
+      />
+      {show && (
+        <div ref={box} className='box'>
+          Endereco proximo ao estacionamento
+        </div>
+      )}
     </div>
   );
 };
