@@ -1,4 +1,0 @@
-
-
-// Tudo e objecto
-
