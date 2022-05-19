@@ -1,2 +1,2 @@
 # React
-Estudos 
+Repositorio de estudos de React, NextJS, e typescript
