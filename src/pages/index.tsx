@@ -16,7 +16,7 @@ function Home() {
 
   return (
     <div>
-      <Slide slides={slides} />
+      pagina Home
     </div>
   )
 }
