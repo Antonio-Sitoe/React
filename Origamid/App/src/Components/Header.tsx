@@ -46,6 +46,8 @@ const Header = () => {
   const [ative, setAtive] = React.useState(navLinks)
   const router = useRouter();
 
+  console.log('renderizou')
+
 
 
   function handleAtive(index: number) {
